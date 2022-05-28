@@ -3,11 +3,12 @@
 
 
 ## 프로젝트를 실행하기 위한 준비물 🐡
-- mysql //username : fund password: 1234  default port 사용 (3306)
-- h2 // username : sa  default port 사용 (8082)
-- redis // default port 사용 (6379)
-- kafka [카프카 설정](https://github.com/krowdfunding-projects/.github/blob/main/%EC%B9%B4%ED%94%84%EC%B9%B4%EC%84%A4%EC%A0%95.md) 파티션은 3개로 해주고 log가 저장될 경로는 각자 알아서 지정. 
-- elasticsearch // default port 사용 (9200)
+- `mysql` //username : fund password: 1234  default port 사용 (3306)
+- `h2` // username : sa  default port 사용 (8082)
+- `redis` // default port 사용 (6379)
+- `kafka` [카프카 설정](https://github.com/krowdfunding-projects/.github/blob/main/%EC%B9%B4%ED%94%84%EC%B9%B4%EC%84%A4%EC%A0%95.md) 파티션은 3개로 해주고 log가 저장될 경로는 각자 알아서 지정. 
+- `elasticsearch` // default port 사용 (9200)
+- `zipkin` // default port 사용 (9411)
 
 
 ```markdown
@@ -32,6 +33,10 @@ implementation("org.springframework.boot:spring-boot-starter-validation")
 implementation("org.springframework.boot:spring-boot-starter-web")
 implementation("org.springframework.cloud:spring-cloud-starter-netflix-eureka-client")
 implementation("org.springframework.cloud:spring-cloud-config-client")
+implementation 'org.springframework.cloud:spring-cloud-sleuth-zipkin'
+implementation 'org.springframework.cloud:spring-cloud-starter-sleuth'
+implementation 'org.springframework.cloud:spring-cloud-starter-openfeign'
+
 runtimeOnly("com.h2database:h2")
 runtimeOnly("mysql:mysql-connector-java")
 
@@ -44,7 +49,17 @@ implementation 'org.springframework.boot:spring-boot-starter-security'
 implementation 'io.jsonwebtoken:jjwt-api:0.11.1'
 implementation 'org.springframework.boot:spring-boot-starter-data-redis'
 runtimeOnly 'io.jsonwebtoken:jjwt-impl:0.11.1', 'io.jsonwebtoken:jjwt-jackson:0.11.1'
+compileOnly 'org.projectlombok:lombok' //자바로 할사람만
+annotationProcessor 'org.projectlombok:lombok'
+
 ```
+
+## 현재 대략 구상안
+
+![image](https://user-images.githubusercontent.com/40031858/170803051-a6c77f1b-0e6a-48bd-80dc-834564f241cf.png)
+
+
+
 
 ![d32237f759e71cd3c228c27b96601b73_1547457159_4914](https://user-images.githubusercontent.com/40031858/170702700-e47a4576-cb3f-49a9-abbe-a63cd9f84887.gif)
 
