@@ -15,6 +15,11 @@
 ## 프로젝트 실행 순서 🩹
 1. run krowdFunding-EureakaServer
 2. run KrowdFunding-ApiGateway
+// 항상 ./gradlew bootRun이나 스프링애플리케이션 실행하기 귀찮으면 아래와 같이 도커로 띄우시면됩니다 만들어놨어요!!
+#### 참고로 김준성은 m1이라 platform붙인거고 안붙이셔도 됩니다.
+// docker run -it -p 8888:8888 --platform linux/amd64 anima94/eureka
+// docker run -it -p 9001:9001 --platform linux/amd64 anima94/configserver
+
 3. run KrowdFunding-ConfigServer
 4. run KrowdFunding domainServer ex) ProductServer 
 - 단, spring active profile jvm argument 값을 넣어야함 ex) local, prod , gcp
